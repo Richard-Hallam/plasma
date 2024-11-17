@@ -45,7 +45,7 @@ def rainbow_drip():
         drip(r,g,b)
 
         
-def rainbow_fill_drain():
+def random_colour_fill_drain():
     colour_list = []
     count = 0
     for i in range (NUM_LEDS):
@@ -53,21 +53,18 @@ def rainbow_fill_drain():
     for i in colour_list:
         led_strip.set_rgb(NUM_LEDS-count, i[0], i[1], i[2])
         count = count + 1
-        time.sleep(0.1)
+        time.sleep(0.01)
     count = 0
     for i in colour_list:
         led_strip.set_rgb(NUM_LEDS-count, 0, 0, 0)
         count = count + 1
-        time.sleep(0.1)
+        time.sleep(0.01)
     
 
-def rainbow_pour():
-    colour_list = [
-        [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
-        for _ in range(NUM_LEDS)]
-    for _ in range(NUM_LEDS):
-        for index, (r, g, b) in enumerate(colour_list):
-            led_strip.set_rgb(index, r, g, b)
-        colour_list = [[0, 0, 0]] + colour_list[:-1]
-        time.sleep(0.1)
-    
+
+def loop_random_colour_fill_drain():
+    while True:
+        random_colour_fill_drain()
+
+
+clear()
